@@ -6,5 +6,11 @@ export const useMainStore = defineStore("main", {
         appConfig: AppConfig,
         users: [],
         message: "custom message"
-      })
+      }),
+      actions: {},
+      getters: {
+        sortedUsers(tab) {
+             return tab
+        }
+      },
 })
