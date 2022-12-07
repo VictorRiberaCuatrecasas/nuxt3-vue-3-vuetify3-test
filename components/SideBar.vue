@@ -1,9 +1,10 @@
 <template>
   <v-navigation-drawer v-model="drawer">
-    <v-sheet color="grey-lighten-4" class="pa-4">
-      <v-avatar class="mb-4" color="grey-darken-1" size="64"></v-avatar>
-
-      <div>john@vuetifyjs.com</div>
+    <v-sheet class="pa-4">
+      <v-avatar class="mb-4" color="grey-darken-1" size="80">
+        <img src="~/public/images/avatar.jpeg" alt="victor">
+      </v-avatar>
+      <div>victorribera92@.com</div>
     </v-sheet>
 
     <v-divider></v-divider>
@@ -32,6 +33,12 @@ export default {
       ["mdi-alert-octagon", "Spam"],
     ],
   }),
-};</script>
+};
+</script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+// quick hack, issues with vuetify3 v-img src attribute
+  img {
+    height: 110px;
+  }
+</style>
