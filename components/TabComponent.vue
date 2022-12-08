@@ -5,42 +5,32 @@
     v-model="tab"
     center-active
     bg-color="primary"
+    show-arrows
   >
-    <v-tab v-for="tab in tabs" :value="tab">{{ tab }}</v-tab>
+    <v-tab v-for="tab in tabs" :value="tab.tabName">{{ tab.tabName }}</v-tab>
   </v-tabs>
-
-  <v-card-text>
+  <!-- TODO LOADING SPINNER -->
+  <v-card-text class="py-0 py-0-lg-3">
     <v-window v-model="tab">
-      <v-window-item v-for="tab in tabs" :value="tab">
+      <v-window-item v-for="tab in tabs" :value="tab.tabName">
         <v-list>
-          <v-list-item>
-            <template v-slot:prepend>
-              <v-avatar color="grey-darken-1"></v-avatar>
-            </template>
-
-            <v-list-item-title>{{ tab }}</v-list-item-title>
-
-            <v-list-item-subtitle>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
-              repellendus distinctio similique
-            </v-list-item-subtitle>
-          </v-list-item>
+          <ContactRow v-for="user in tab.filteredUsers" :user="user" />
         </v-list>
       </v-window-item>
-
-      <v-window-item value="two"> Two </v-window-item>
-
-      <v-window-item value="three"> Three </v-window-item>
     </v-window>
   </v-card-text>
 </template>
 
 <script setup>
-    import { useMainStore } from "~~/store/MainStore";
+  // PROPS
+  const props = defineProps({
+    tabs: {
+      type: Object,
+    },
+  });
 
-    const mainStore = useMainStore();
-    const tabs = mainStore.appConfig.tabs;
-    const tab = ref(null);
+  // V by default so you cant try to find victors
+  const tab = ref("v");
 </script>
 
 <style scoped></style>

@@ -15,8 +15,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en",
       },
-      //dont know how to access the store in this file,
-      //could have set the head in a layout but I liked it more here
       title: "Contact List",
       meta: [
         { charset: "utf-8" },
